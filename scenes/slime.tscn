@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="3_n6pvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
+radius = 24.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p2gj0"]
 load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
@@ -85,7 +86,7 @@ shape = SubResource("CircleShape2D_ilgn1")
 [node name="Sprite" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_g40cl")
 animation = &"idle"
-frame_progress = 0.661746
+frame_progress = 0.780885
 script = ExtResource("3_n6pvg")
 init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
 new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
