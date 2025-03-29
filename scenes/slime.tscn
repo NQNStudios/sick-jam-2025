@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm6kjk5eowdbx"]
+[gd_scene load_steps=12 format=3 uid="uid://cm6kjk5eowdbx"]
 
+[ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scenes/SlimeBody.gd" id="1_p2gj0"]
 [ext_resource type="Texture2D" uid="uid://b752nupyflybk" path="res://images/SICK_SlimeSpritesheet.png" id="2_n6pvg"]
+[ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="3_n6pvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
 
@@ -55,111 +57,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_n6pvg"]
-resource_local_to_scene = true
-script/source = "@tool
-extends AnimatedSprite2D
-
-@export var init_colors:Array[Color] = []
-var init_color_indices = {}
-@export var new_colors:Array[Color] = []
-var new_colors_active = []
-var textures:Array[Texture2D] = []
-var new_textures:Array[Texture2D] = []
-
-func get_textures():
-	if textures.is_empty():
-		for anim_name in sprite_frames.get_animation_names():
-			for frame_idx in range(sprite_frames.get_frame_count(anim_name)):
-				var texture = sprite_frames.get_frame_texture(anim_name, frame_idx)
-				if texture not in textures:
-					textures.append(texture)
-	return textures
-
-func get_init_colors():
-	if init_colors.is_empty():
-		for texture in get_textures():
-			var image = texture.get_image()
-			for px in range(texture.get_width()):
-				for py in range(texture.get_height()):
-					var color = image.get_pixel(px, py)
-					if color.a != 0 and color not in init_colors:
-						init_colors.append(color)
-						if new_colors.size() < init_colors.size():
-							new_colors.append(color)
-		while new_colors.size() > init_colors.size():
-			new_colors.pop_back()
-		for color_idx in range(init_colors.size()):
-			init_color_indices[init_colors[color_idx]] = color_idx
-	return init_colors
-
-func apply_swap():
-	var modified = new_colors_active.size() != new_colors.size()
-	if not modified:
-		for color_idx in range(new_colors.size()):
-			if new_colors[color_idx] != new_colors_active[color_idx]:
-				modified = true
-	
-	if not modified:
-		return
-	
-	new_colors_active = new_colors
-		
-	print(\"applying swap\")
-	sprite_frames = sprite_frames.duplicate(true)
-
-	var done_textures = []
-	var old_new_textures = new_textures
-	new_textures = []
-	
-	for texture in textures:
-		if texture in done_textures:
-			continue
-		var new_texture = texture.duplicate(true)
-		var image = new_texture.get_image().duplicate(true)
-		for px in image.get_width():
-			for py in image.get_height():
-				var init_color = image.get_pixel(px, py)
-				if init_color in init_color_indices:
-					var new_color = new_colors[init_color_indices[init_color]]
-					if init_color != new_color:
-						image.set_pixel(px, py, new_color)
-		new_textures.append(new_texture)
-		done_textures.append(texture)
-	
-	for anim_name in sprite_frames.get_animation_names():
-		for frame_idx in range(sprite_frames.get_frame_count(anim_name)):
-			var texture = sprite_frames.get_frame_texture(anim_name, frame_idx)
-			var texture_idx = textures.find(texture)
-			if texture_idx == -1:
-				texture_idx = old_new_textures.find(texture)
-			var duration = sprite_frames.get_frame_duration(anim_name, frame_idx)
-			sprite_frames.set_frame(anim_name, frame_idx, new_textures[texture_idx], duration)
-		
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	get_textures()
-	get_init_colors()
-	apply_swap()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		apply_swap()
-"
-
 [node name="Slime" type="Node2D"]
 scale = Vector2(2, 2)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_p2gj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_ilgn1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 sprite_frames = SubResource("SpriteFrames_n6pvg")
 animation = &"idle"
-script = SubResource("GDScript_n6pvg")
-init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
-new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
+script = ExtResource("3_n6pvg")
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

@@ -1,4 +1,64 @@
-@tool
+[gd_scene load_steps=12 format=3 uid="uid://cm6kjk5eowdbx"]
+
+[ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scenes/SlimeBody.gd" id="1_p2gj0"]
+[ext_resource type="Texture2D" uid="uid://b752nupyflybk" path="res://images/SICK_SlimeSpritesheet.png" id="2_n6pvg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_371uh"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6pvg"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_371uh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2gj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjw23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2npkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd6lc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_n6pvg"]
+resource_local_to_scene = true
+script/source = "@tool
 extends AnimatedSprite2D
 
 @export var init_colors:Array[Color] = []
@@ -45,7 +105,8 @@ func apply_swap():
 		return
 	
 	new_colors_active = new_colors
-	print("applying swap")
+		
+	print(\"applying swap\")
 	sprite_frames = sprite_frames.duplicate(true)
 
 	var done_textures = []
@@ -75,15 +136,35 @@ func apply_swap():
 				texture_idx = old_new_textures.find(texture)
 			var duration = sprite_frames.get_frame_duration(anim_name, frame_idx)
 			sprite_frames.set_frame(anim_name, frame_idx, new_textures[texture_idx], duration)
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_textures()
 	get_init_colors()
 	apply_swap()
-	play("idle", 2.0)
+	play(\"idle\", 2.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		apply_swap()
+"
+
+[node name="Slime" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_p2gj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_ilgn1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+sprite_frames = SubResource("SpriteFrames_n6pvg")
+animation = &"idle"
+script = SubResource("GDScript_n6pvg")
+init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
+new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
