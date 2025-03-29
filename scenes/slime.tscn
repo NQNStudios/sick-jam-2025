@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://cm6kjk5eowdbx"]
+[gd_scene load_steps=20 format=3 uid="uid://cm6kjk5eowdbx"]
 
+[ext_resource type="Script" uid="uid://baxrrkyf7ggly" path="res://scripts/Slime.gd" id="1_2npkn"]
 [ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scenes/SlimeBody.gd" id="1_p2gj0"]
 [ext_resource type="Material" uid="uid://dfhp78csu2jku" path="res://shaders/fire.tres" id="2_pjw23"]
 [ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="3_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://txshufsb8btt" path="res://images/black32.png" id="5_2npkn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
-radius = 24.0
+radius = 40.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pjw23"]
 load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
@@ -78,6 +79,7 @@ animations = [{
 }]
 
 [node name="Slime" type="Node2D"]
+script = ExtResource("1_2npkn")
 
 [node name="Body" type="RigidBody2D" parent="."]
 contact_monitor = true
@@ -91,7 +93,7 @@ shape = SubResource("CircleShape2D_ilgn1")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g2qvl")
 animation = &"idle"
-frame_progress = 0.0943817
+frame_progress = 0.210827
 script = ExtResource("3_n6pvg")
 init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
 new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
