@@ -84,6 +84,6 @@ func _ready() -> void:
 	play("idle", 2.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		apply_swap()
