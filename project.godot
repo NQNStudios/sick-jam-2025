@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Sliming"
-run/main_scene="res://level.tscn"
+run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/image="res://images/SICK_logo_pixel.png"
-config/icon="res://icon.svg"
+config/icon="uid://bxusr0y057joe"
 
 [display]
 
@@ -25,3 +25,4 @@ window/stretch/mode="canvas_items"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

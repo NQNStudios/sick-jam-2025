@@ -1,23 +1,23 @@
 [gd_scene load_steps=15 format=3 uid="uid://d0nnd6nukfhlj"]
 
-[ext_resource type="Script" uid="uid://c5qjeiraxgfvw" path="res://Level.gd" id="1_i2t4f"]
-[ext_resource type="Texture2D" uid="uid://bagd6pq2tuqes" path="res://images/cavewall.png" id="2_0b4ue"]
-[ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="2_h4pe4"]
-[ext_resource type="Texture2D" uid="uid://cap2c3e4oyuc8" path="res://images/ladder.png" id="3_1ainy"]
-[ext_resource type="PackedScene" uid="uid://cm6kjk5eowdbx" path="res://scenes/slime.tscn" id="3_oi3di"]
-[ext_resource type="PackedScene" uid="uid://dxfqtv5y1n525" path="res://scenes/slime-different.tscn" id="4_0b4ue"]
-[ext_resource type="Texture2D" uid="uid://et013qy7tjew" path="res://images/cavefloor.png" id="5_f2txt"]
-[ext_resource type="Texture2D" uid="uid://usrphqma1b5y" path="res://images/lava.png" id="7_n6hdu"]
-[ext_resource type="Script" uid="uid://36tsxv4fv0ra" path="res://LavaAnimation.gd" id="8_km5ld"]
+[ext_resource type="Script" uid="uid://c5qjeiraxgfvw" path="res://scripts/Level.gd" id="1_8c41q"]
+[ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="2_olg7q"]
+[ext_resource type="Texture2D" uid="uid://bagd6pq2tuqes" path="res://images/cavewall.png" id="3_t1rx8"]
+[ext_resource type="Texture2D" uid="uid://cap2c3e4oyuc8" path="res://images/ladder.png" id="4_8iemx"]
+[ext_resource type="Texture2D" uid="uid://et013qy7tjew" path="res://images/cavefloor.png" id="5_64w2a"]
+[ext_resource type="PackedScene" uid="uid://cm6kjk5eowdbx" path="res://scenes/slime.tscn" id="6_fpun6"]
+[ext_resource type="PackedScene" uid="uid://dxfqtv5y1n525" path="res://scenes/slime-different.tscn" id="7_wc255"]
+[ext_resource type="Texture2D" uid="uid://usrphqma1b5y" path="res://images/lava.png" id="8_arp2o"]
+[ext_resource type="Script" uid="uid://36tsxv4fv0ra" path="res://scripts/LavaAnimation.gd" id="9_ux5qa"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n6hdu"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82cfe"]
 load_path = "res://.godot/imported/SICK_palette.png-c46194a4a78054fcfb7721441e5ff7ee.ctex"
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_km5ld"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gunhw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_n6hdu")
+"texture": SubResource("CompressedTexture2D_82cfe")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,28 +34,27 @@ size = Vector2(59, 508)
 size = Vector2(640, 480)
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_i2t4f")
+script = ExtResource("1_8c41q")
 
 [node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(320, 240)
 
 [node name="Palette" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_km5ld")
+sprite_frames = SubResource("SpriteFrames_gunhw")
 animation = &"idle"
-frame_progress = 0.211905
-script = ExtResource("2_h4pe4")
+script = ExtResource("2_olg7q")
 init_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
 new_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
 
 [node name="CaveWall" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
-texture = ExtResource("2_0b4ue")
+texture = ExtResource("3_t1rx8")
 
 [node name="Ladder" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
-texture = ExtResource("3_1ainy")
+texture = ExtResource("4_8iemx")
 
 [node name="Bounds" type="Node2D" parent="."]
 
@@ -67,7 +66,7 @@ shape = SubResource("RectangleShape2D_f2txt")
 
 [node name="CaveFloor" type="Sprite2D" parent="Bounds/Floor"]
 scale = Vector2(2, 2)
-texture = ExtResource("5_f2txt")
+texture = ExtResource("5_64w2a")
 
 [node name="Wall" type="StaticBody2D" parent="Bounds"]
 
@@ -83,13 +82,13 @@ shape = SubResource("RectangleShape2D_1ainy")
 
 [node name="Slimes" type="Node2D" parent="."]
 
-[node name="Slime" parent="Slimes" instance=ExtResource("3_oi3di")]
+[node name="Slime" parent="Slimes" instance=ExtResource("6_fpun6")]
 position = Vector2(173, 325)
 
-[node name="Slime2" parent="Slimes" instance=ExtResource("4_0b4ue")]
+[node name="Slime2" parent="Slimes" instance=ExtResource("7_wc255")]
 position = Vector2(417, 106)
 
-[node name="Slime3" parent="Slimes" instance=ExtResource("3_oi3di")]
+[node name="Slime3" parent="Slimes" instance=ExtResource("6_fpun6")]
 position = Vector2(165, 110)
 
 [node name="Lava" type="Area2D" parent="."]
@@ -97,8 +96,8 @@ position = Vector2(320, 770)
 
 [node name="Sprite" type="Sprite2D" parent="Lava"]
 scale = Vector2(2, 2)
-texture = ExtResource("7_n6hdu")
-script = ExtResource("8_km5ld")
+texture = ExtResource("8_arp2o")
+script = ExtResource("9_ux5qa")
 
 [node name="Shape" type="CollisionShape2D" parent="Lava"]
 shape = SubResource("RectangleShape2D_n6hdu")
