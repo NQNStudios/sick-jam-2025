@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0nnd6nukfhlj"]
+[gd_scene load_steps=8 format=3 uid="uid://d0nnd6nukfhlj"]
 
-[ext_resource type="Texture2D" uid="uid://b752nupyflybk" path="res://images/SICK_SlimeSpritesheet.png" id="1_fxs7r"]
 [ext_resource type="Texture2D" uid="uid://db3p0n6niqdyg" path="res://images/SICK_palette.png" id="1_lgfga"]
-[ext_resource type="Script" path="res://scripts/ColorableSprite2D.gd" id="2_h4pe4"]
+[ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="2_h4pe4"]
+[ext_resource type="PackedScene" uid="uid://cm6kjk5eowdbx" path="res://scenes/slime.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://dxfqtv5y1n525" path="res://scenes/slime-different.tscn" id="4_0b4ue"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_oqcf6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0b4ue"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -22,81 +23,19 @@ gradient = SubResource("Gradient_to3j2")
 width = 640
 height = 480
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_suqc4"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vnl3l"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52yc0"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yv1ix"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bckp0"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4c56"]
-atlas = ExtResource("1_fxs7r")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p70j7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_suqc4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vnl3l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_52yc0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yv1ix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bckp0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j4c56")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [node name="Level" type="Node2D"]
 
 [node name="Palette" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_oqcf6")
+sprite_frames = SubResource("SpriteFrames_0b4ue")
 script = ExtResource("2_h4pe4")
+init_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
+new_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
 
 [node name="ScreenReference" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
 texture = SubResource("GradientTexture2D_8720d")
 
-[node name="Slime" type="Node2D" parent="."]
+[node name="Slime" parent="." instance=ExtResource("3_oi3di")]
 position = Vector2(320, 240)
-scale = Vector2(2, 2)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Slime"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slime/RigidBody2D"]
-shape = SubResource("CircleShape2D_ilgn1")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slime"]
-sprite_frames = SubResource("SpriteFrames_p70j7")
-animation = &"idle"
-frame_progress = 0.492103
-script = ExtResource("2_h4pe4")
-init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
-new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
+[node name="Slime2" parent="." instance=ExtResource("4_0b4ue")]
