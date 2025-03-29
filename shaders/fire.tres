@@ -1,0 +1,54 @@
+[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://dfhp78csu2jku"]
+
+[ext_resource type="Shader" uid="uid://cwvfkqlyynn20" path="res://shaders/fire.gdshader" id="1_hxisb"]
+
+[sub_resource type="Gradient" id="Gradient_hxisb"]
+offsets = PackedFloat32Array(0, 0.4, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.6, 0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v3kif"]
+gradient = SubResource("Gradient_hxisb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pjw23"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.5, 0.7)
+colors = PackedColorArray(0.929412, 0.113725, 0.113725, 1, 0.984314, 0.466667, 0.309804, 1, 0.929412, 0.113725, 0.113725, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2npkn"]
+gradient = SubResource("Gradient_pjw23")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2v7ff"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pjw23"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_35t6e"]
+color_ramp = SubResource("Gradient_2v7ff")
+noise = SubResource("FastNoiseLite_pjw23")
+
+[sub_resource type="Gradient" id="Gradient_2npkn"]
+offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.501961, 0.501961, 0.501961, 1, 1, 1, 1, 1, 0.501961, 0.501961, 0.501961, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fd6lc"]
+gradient = SubResource("Gradient_2npkn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v3kif"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_evuv3"]
+noise = SubResource("FastNoiseLite_v3kif")
+
+[resource]
+shader = ExtResource("1_hxisb")
+shader_parameter/fire_scale = Vector2(1.2, 1.2)
+shader_parameter/fire_speed_direction = Vector2(0, 1)
+shader_parameter/fire_noise = SubResource("NoiseTexture2D_35t6e")
+shader_parameter/fire_shape_gradient = SubResource("GradientTexture2D_fd6lc")
+shader_parameter/flame_height_gradient = SubResource("NoiseTexture2D_evuv3")
+shader_parameter/fire_color = SubResource("GradientTexture2D_2npkn")
+shader_parameter/fire_alpha = SubResource("GradientTexture2D_v3kif")

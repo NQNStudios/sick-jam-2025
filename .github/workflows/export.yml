@@ -9,6 +9,7 @@ on:
     pull_request:
         branches:
             - "*"
+
 env:
     GODOT_VERSION: 4.4
     BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
