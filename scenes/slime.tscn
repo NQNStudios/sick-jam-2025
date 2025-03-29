@@ -1,52 +1,39 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm6kjk5eowdbx"]
+[gd_scene load_steps=14 format=3 uid="uid://cm6kjk5eowdbx"]
 
 [ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scenes/SlimeBody.gd" id="1_p2gj0"]
+[ext_resource type="Texture2D" uid="uid://b752nupyflybk" path="res://images/SICK_SlimeSpritesheet.png" id="2_n6pvg"]
+[ext_resource type="Shader" uid="uid://cwvfkqlyynn20" path="res://shaders/fire.gdshader" id="2_pjw23"]
 [ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="3_n6pvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilgn1"]
 radius = 24.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p2gj0"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2npkn"]
+shader = ExtResource("2_pjw23")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
-atlas = SubResource("CompressedTexture2D_p2gj0")
-region = Rect2(0, 0, 32, 32)
+atlas = ExtResource("2_n6pvg")
+region = Rect2(0, 0, 40, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pjw23"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
-atlas = SubResource("CompressedTexture2D_pjw23")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("2_n6pvg")
+region = Rect2(80, 0, 40, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fd6lc"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(0, 40, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gstla"]
-atlas = SubResource("CompressedTexture2D_fd6lc")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("2_n6pvg")
+region = Rect2(40, 40, 40, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v5wyi"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
-atlas = SubResource("CompressedTexture2D_v5wyi")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vnioy"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xjuo"]
-atlas = SubResource("CompressedTexture2D_vnioy")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a02ik"]
-load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu8ps"]
-atlas = SubResource("CompressedTexture2D_a02ik")
-region = Rect2(64, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(80, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g40cl"]
 resource_local_to_scene = true
@@ -56,19 +43,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_n6pvg")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pjw23")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2npkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd6lc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gstla")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0l8pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2xjuo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu8ps")
+"texture": SubResource("AtlasTexture_v5wyi")
 }],
 "loop": true,
 "name": &"idle",
@@ -84,9 +71,10 @@ script = ExtResource("1_p2gj0")
 shape = SubResource("CircleShape2D_ilgn1")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_2npkn")
 sprite_frames = SubResource("SpriteFrames_g40cl")
 animation = &"idle"
-frame_progress = 0.780885
+frame_progress = 0.75102
 script = ExtResource("3_n6pvg")
 init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
 new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
