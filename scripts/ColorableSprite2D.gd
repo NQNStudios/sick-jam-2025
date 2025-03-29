@@ -18,6 +18,8 @@ func get_textures():
 	return textures
 
 func get_init_colors():
+	if not Engine.is_editor_hint():
+		init_colors = []
 	if init_colors.is_empty():
 		for texture in get_textures():
 			var image = texture.get_image()
@@ -55,16 +57,15 @@ func apply_swap():
 	for texture in textures:
 		if texture in done_textures:
 			continue
-		var new_texture = texture.duplicate(true)
-		var image = new_texture.get_image().duplicate(true)
+		var image = texture.get_image().duplicate(true)
 		for px in image.get_width():
 			for py in image.get_height():
 				var init_color = image.get_pixel(px, py)
 				if init_color in init_color_indices:
 					var new_color = new_colors[init_color_indices[init_color]]
-					if init_color != new_color:
+					if not init_color.is_equal_approx(new_color):
 						image.set_pixel(px, py, new_color)
-		new_textures.append(new_texture)
+		new_textures.append(ImageTexture.create_from_image(image))
 		done_textures.append(texture)
 	
 	for anim_name in sprite_frames.get_animation_names():
@@ -80,6 +81,7 @@ func apply_swap():
 func _ready() -> void:
 	get_textures()
 	get_init_colors()
+	new_colors_active = init_colors
 	apply_swap()
 	play("idle", 2.0)
 

@@ -8,7 +8,8 @@ var base_radius = 12
 
 const slime_types = {
 	1: "slime",
-	2: "slime-different"
+	2: "slime2",
+	4: "slime4"
 }
 
 # TODO make this bigger but exclude really big ones

@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=3 uid="uid://dorheggq3ele7"]
+
+[ext_resource type="PackedScene" uid="uid://cm6kjk5eowdbx" path="res://scenes/slime.tscn" id="1_ktpc4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ktpc4"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkb45"]
+atlas = SubResource("CompressedTexture2D_ktpc4")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_27vx1"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nfpj"]
+atlas = SubResource("CompressedTexture2D_27vx1")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l5i7y"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f5sk"]
+atlas = SubResource("CompressedTexture2D_l5i7y")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a8jyb"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qx0f"]
+atlas = SubResource("CompressedTexture2D_a8jyb")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vqov"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia7yj"]
+atlas = SubResource("CompressedTexture2D_4vqov")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a8q01"]
+load_path = "res://.godot/imported/SICK_SlimeSpritesheet.png-8d9ef7e41a11c08bb3d23ea5a273b6fe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_680g7"]
+atlas = SubResource("CompressedTexture2D_a8q01")
+region = Rect2(80, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yml0x"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkb45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nfpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f5sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qx0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia7yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_680g7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Slime" instance=ExtResource("1_ktpc4")]
+
+[node name="Body" parent="." index="0"]
+size = 4
+sprite_scale = 4.25
+
+[node name="Sprite" parent="Body" index="1"]
+scale = Vector2(4.25, 4.25)
+sprite_frames = SubResource("SpriteFrames_yml0x")
+frame_progress = 0.382169
