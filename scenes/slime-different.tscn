@@ -80,4 +80,4 @@ sprite_scale = 2.5
 [node name="Sprite" parent="Body" index="1"]
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_qx8x1")
-frame_progress = 0.553094
+frame_progress = 0.871585

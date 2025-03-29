@@ -43,6 +43,7 @@ func _on_body_entered(body: Node) -> void:
 				var new_position = global_position
 				if body.linear_velocity.length() < linear_velocity.length():
 					new_position = body.global_position
+				new_position.y -= (combined.get_node("Body").get_node("Circle").shape.radius - shape.radius)
 			
 				combined.transform.origin = new_position
 				body.get_parent().call_deferred("queue_free")
