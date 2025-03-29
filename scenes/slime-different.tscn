@@ -72,13 +72,10 @@ animations = [{
 }]
 
 [node name="Slime" instance=ExtResource("1_7shh3")]
-scale = Vector2(4, 4)
 
-[node name="RigidBody2D" parent="." index="0"]
-size = 2
+[node name="Body" parent="." index="0"]
+sprite_scale = 4
 
-[node name="AnimatedSprite2D" parent="RigidBody2D" index="1"]
+[node name="Sprite" parent="Body" index="1"]
 sprite_frames = SubResource("SpriteFrames_qx8x1")
-frame_progress = 0.210493
-init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
-new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
+frame_progress = 0.403366

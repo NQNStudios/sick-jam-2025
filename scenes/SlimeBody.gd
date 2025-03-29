@@ -2,6 +2,8 @@ class_name SlimeBody
 extends RigidBody2D
 
 @export var size = 1
+@export var sprite_scale = 2
+var base_radius = 16
 
 var slime_types = {
 	1: "slime",
@@ -13,7 +15,8 @@ var alive = true
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1000
-
+	$Sprite.scale = Vector2(sprite_scale, sprite_scale)
+	$Circle.shape.radius = base_radius * sprite_scale
 
 func _on_body_entered(body: Node) -> void:
 	if alive and body is SlimeBody and body.alive:
