@@ -59,6 +59,9 @@ func _on_body_entered(body: Node) -> void:
 				shover.global_position = new_position
 				shover.get_node("Circle").shape = new_shape
 				
+				var pm = shover.get_node("Particles").process_material
+				pm.color = combined.get_node("Body/Sprite").new_colors[2]
+				pm.emission_sphere_radius = combined.get_node("Body/Circle").shape.radius
 				combined.global_position = new_position
 				shover.slime = combined
 				
