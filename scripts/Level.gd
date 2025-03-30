@@ -131,6 +131,9 @@ func _on_next_rung_body_entered(body: Node2D) -> void:
 			bodies.append(sbody)
 			slime.remove_child(sbody)
 			var sprite = sbody.get_node("Sprite")
+			# TODO This stops a crash without understanding the underlying cause
+			if sprite == null:
+				continue
 			sprite.transform = sbody.transform
 			sprite.scale = Vector2(sbody.sprite_scale, sbody.sprite_scale)
 			sbody.remove_child(sprite)
