@@ -75,6 +75,7 @@ func spawn_active_slime(x, size = -1):
 	var type = types[size]
 	active_slime = load("res://scenes/" + type + ".tscn").instantiate()
 	$Slimes.add_child(active_slime)
+	$Slimes.sort()
 	active_slime.body.freeze = true
 	active_slime.global_position.y = drop_y
 	active_slime.global_position.x = x
