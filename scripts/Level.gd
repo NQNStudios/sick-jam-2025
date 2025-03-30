@@ -10,7 +10,6 @@ var paused = false
 
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	randomize()
 	
 	spawn_active_slime(320)
@@ -26,7 +25,6 @@ func _input(event):
 	if event.is_action_pressed("pause"):
 		paused = !paused
 		$Paused.visible = paused
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if paused else Input.MOUSE_MODE_CAPTURED
 	if paused:
 		return
 	if OS.is_debug_build() and event.is_action_pressed("debug_spawn"):
@@ -35,7 +33,7 @@ func _input(event):
 		drop_and_spawn()
 	elif event is InputEventMouseMotion:
 		if active_slime != null:
-			active_slime.global_position.x += event.screen_relative.x
+			active_slime.global_position.x = event.position.x
 			active_slime.global_position.x = clamp(active_slime.global_position.x, active_slime.body.shape.radius, 640-active_slime.body.shape.radius)
 
 func _process(delta):
