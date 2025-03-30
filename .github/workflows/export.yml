@@ -1,19 +1,19 @@
 name: Export
 
 on:
-    push:
-        branches:
-            - "*"
-        tags:
-            - "v*.*.*"
-    pull_request:
-        branches:
-            - "*"
+  push:
+    branches:
+      - "*"
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - "*"
 
 env:
-    GODOT_VERSION: 4.4
-    BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-
+  GODOT_VERSION: 4.4
+  BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+  ITCH_PUSH: ${{ startsWith(github.ref, 'refs/tags/') && 'yes' || '' }}
 jobs:
   build:
     runs-on: ubuntu-22.04  # Use 22.04 with godot 4

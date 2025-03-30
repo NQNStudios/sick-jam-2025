@@ -1,5 +1,7 @@
 #! /bin/bash
 
+if [ -z "$ITCH_PUSH" ]; then exit 0; fi
+
 # -L follows redirects
 # -O specifies output name
 curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
