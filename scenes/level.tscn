@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccnjfsm43x841"]
+[gd_scene load_steps=16 format=3 uid="uid://ccnjfsm43x841"]
 
 [ext_resource type="Script" uid="uid://c5qjeiraxgfvw" path="res://scripts/Level.gd" id="1_8c41q"]
 [ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="2_olg7q"]
@@ -22,6 +22,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b121j"]
+size = Vector2(659, 22)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2txt"]
 size = Vector2(791, 767.5)
 
@@ -34,6 +37,9 @@ size = Vector2(640, 507)
 [sub_resource type="LabelSettings" id="LabelSettings_8c41q"]
 font_size = 64
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klq6b"]
+size = Vector2(651, 20)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8c41q")
 
@@ -43,22 +49,30 @@ offset = Vector2(320, 240)
 [node name="Palette" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b121j")
 animation = &"idle"
-frame_progress = 0.389347
+frame_progress = 0.518515
 script = ExtResource("2_olg7q")
 init_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
 new_colors = Array[Color]([Color(0.596078, 0.65098, 0.72549, 1), Color(0, 0, 0, 1), Color(0.937255, 1, 0.615686, 1), Color(0.466667, 0.121569, 0.411765, 1), Color(0.6, 0.698039, 0.756863, 1), Color(0.239216, 0.278431, 0.301961, 1), Color(0.666667, 0.776471, 0.843137, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.788235, 0.917647, 1, 1), Color(0.376471, 0.439216, 0.47451, 1), Color(1, 1, 1, 1), Color(0.690196, 0.109804, 0.294118, 1), Color(0.352941, 0.392157, 0.741176, 1), Color(0.827451, 0.431373, 0.309804, 1), Color(0.215686, 0.215686, 0.533333, 1), Color(0.984314, 0.466667, 0.309804, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0.141176, 0.360784, 0.231373, 1), Color(0.898039, 0.678431, 0.313726, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(1, 0.780392, 0.403922, 1), Color(0.929412, 0.113725, 0.113725, 1), Color(0.733333, 0.278431, 0.756863, 1), Color(0.345098, 0.0784314, 0.396078, 1), Color(0.537255, 0.407843, 0.827451, 1), Color(1, 0.631373, 0.823529, 1), Color(0.447059, 0.521569, 0.564706, 1), Color(0.682353, 1, 0.47451, 1), Color(0.372549, 0.686275, 0.964706, 1), Color(0.760784, 0.337255, 0.913725, 1)])
 
-[node name="CaveWall" type="Sprite2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="CaveWall" type="Sprite2D" parent="Background"]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("3_t1rx8")
 
-[node name="Ladder" type="Sprite2D" parent="."]
+[node name="Ladder" type="Sprite2D" parent="Background"]
 position = Vector2(320, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("4_8iemx")
 
 [node name="Bounds" type="Node2D" parent="."]
+
+[node name="LowerRung" type="StaticBody2D" parent="Bounds"]
+position = Vector2(318, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LowerRung"]
+shape = SubResource("RectangleShape2D_b121j")
 
 [node name="Floor" type="StaticBody2D" parent="Bounds"]
 position = Vector2(320, 400)
@@ -125,4 +139,11 @@ label_settings = SubResource("LabelSettings_8c41q")
 
 [node name="Shovers" type="Node2D" parent="."]
 
+[node name="NextRung" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="NextRung"]
+position = Vector2(322.5, 33)
+shape = SubResource("RectangleShape2D_klq6b")
+
 [connection signal="body_entered" from="Lava" to="." method="_on_lava_body_entered"]
+[connection signal="body_entered" from="NextRung" to="." method="_on_next_rung_body_entered"]
