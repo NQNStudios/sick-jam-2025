@@ -28,6 +28,9 @@ func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1000
 	$Sprite.scale = Vector2(sprite_scale, sprite_scale)
+	set_shape()
+
+func set_shape():
 	$Circle.shape.radius = base_radius * sprite_scale
 
 func _on_body_entered(body: Node) -> void:
@@ -46,7 +49,7 @@ func _on_body_entered(body: Node) -> void:
 				
 				var combined_scene = load("res://scenes/" + slime_types[size*2] + ".tscn")
 				var combined = combined_scene.instantiate()
-			
+				combined.get_node("Body").set_shape()
 				# TODO throw appropriately colored slime globs to cover up the sudden change 
 				# Merge to the position of the more stationary slime:
 				var new_position = global_position

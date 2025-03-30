@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cm6kjk5eowdbx"]
 
 [ext_resource type="Script" path="res://scripts/Slime.gd" id="1_2npkn"]
-[ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scenes/SlimeBody.gd" id="1_p2gj0"]
+[ext_resource type="Script" uid="uid://d0vrpi8owj4kf" path="res://scripts/SlimeBody.gd" id="1_p2gj0"]
 [ext_resource type="Material" uid="uid://dfhp78csu2jku" path="res://shaders/fire.tres" id="2_pjw23"]
 [ext_resource type="Script" uid="uid://b2uxcgynnoyf6" path="res://scripts/ColorableSprite2D.gd" id="3_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://txshufsb8btt" path="res://images/black32.png" id="5_2npkn"]
@@ -95,7 +95,7 @@ shape = SubResource("CircleShape2D_ilgn1")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tyl0w")
 animation = &"idle"
-frame_progress = 0.162041
+frame_progress = 0.0329827
 script = ExtResource("3_n6pvg")
 init_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
 new_colors = Array[Color]([Color(0.141176, 0.360784, 0.231373, 1), Color(0.32549, 0.639216, 0.32549, 1), Color(0.447059, 0.913725, 0.145098, 1), Color(0, 0, 0, 1), Color(0.788235, 0.968627, 0.67451, 1), Color(1, 1, 1, 1), Color(0.937255, 1, 0.615686, 1)])
