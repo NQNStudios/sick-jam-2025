@@ -19,4 +19,7 @@ func _process(_delta: float) -> void:
 		
 		await tree.create_timer(0.1).timeout
 		call_deferred("free")
-		tree.get_current_scene().get_node("Slimes").call_deferred("add_child", slime)
+		var slimes = tree.get_current_scene().get_node("Slimes")
+		slimes.call_deferred("add_child", slime)
+		slimes.call_deferred("sort")
+		

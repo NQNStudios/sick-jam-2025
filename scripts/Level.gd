@@ -122,7 +122,8 @@ func _on_next_rung_body_entered(body: Node2D) -> void:
 		
 		# Lower slimes all remove from physics
 		var bodies = []
-		for slime in $Slimes.get_children():
+		var slimes = $Slimes.get_children()
+		for slime in slimes:
 			if slime == active_slime:
 				bodies.append(null)
 				continue
@@ -151,7 +152,7 @@ func _on_next_rung_body_entered(body: Node2D) -> void:
 		# YOU SAID I'D REACH THE TOP!
 
 		var idx = 0
-		for slime in $Slimes.get_children():
+		for slime in slimes:
 			if bodies[idx] != null and slime.global_position.y - bodies[idx].shape.radius > next_lower_rung.global_position.y:
 				slime.call_deferred("queue_free")
 				body.call_deferred("queue_free")
