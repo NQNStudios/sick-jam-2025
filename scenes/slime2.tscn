@@ -110,5 +110,5 @@ sprite_scale = 2.5
 [node name="Sprite" parent="Body" index="1"]
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_nu3np")
-frame_progress = 0.0
+frame_progress = 0.261502
 new_colors = Array[Color]([Color(0.466667, 0.121569, 0.411765, 1), Color(0.392157, 0.32549, 0.431373, 1), Color(0.827451, 0.45098, 0.690196, 1), Color(0, 0, 0, 1), Color(0.596078, 0.65098, 0.72549, 1), Color(1, 1, 1, 1), Color(0.666667, 0.776471, 0.843137, 1)])
