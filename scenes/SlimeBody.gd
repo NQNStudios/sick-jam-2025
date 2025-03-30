@@ -9,11 +9,13 @@ var base_radius = 12
 const slime_types = {
 	1: "slime",
 	2: "slime2",
-	4: "slime4"
+	4: "slime4",
+	8: "slime8",
+	16: "slime16"
 }
 
 # TODO make this bigger but exclude really big ones
-const max_active_size = 2
+const max_active_size = 4
 
 @onready var shape = $Circle.shape
 
