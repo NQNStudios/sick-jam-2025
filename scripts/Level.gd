@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var base_lava_speed = 10
+@export var base_lava_speed = 3
 
 var lava_velocity = Vector2()
 
@@ -43,9 +43,10 @@ func _input(event):
 			active_slime.global_position.x = clamp(active_slime.global_position.x, active_slime.body.shape.radius, 640-active_slime.body.shape.radius)
 
 func _process(delta):
-	$Lava.transform.origin += lava_velocity * delta
-	if active_slime != null:
-		active_slime.global_position.y = 16
+	if not paused:
+		$Lava.transform.origin += lava_velocity * delta
+		if active_slime != null:
+			active_slime.global_position.y = 16
 
 const upgrade_chance = 0.5
 var first_time = true
