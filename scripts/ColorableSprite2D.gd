@@ -32,9 +32,14 @@ func get_init_colors():
 							new_colors.append(color)
 		while new_colors.size() > init_colors.size():
 			new_colors.pop_back()
+		init_colors.sort_custom(sort_luminance)
 		for color_idx in range(init_colors.size()):
 			init_color_indices[init_colors[color_idx]] = color_idx
+		new_colors.sort_custom(sort_luminance)
 	return init_colors
+
+func sort_luminance(col1, col2):
+	return col1.get_luminance() < col2.get_luminance()
 
 func apply_swap():
 	var modified = new_colors_active.size() != new_colors.size()
@@ -67,6 +72,14 @@ func apply_swap():
 						image.set_pixel(px, py, new_color)
 		new_textures.append(ImageTexture.create_from_image(image))
 		done_textures.append(texture)
+	
+	# Export new textures
+	for i in range(done_textures.size()):
+		var new_texture = new_textures[i]
+		var done_texture = done_textures[i]
+		var outfile = str(i) + ".png"
+		new_texture.get_image().save_png(outfile)
+	
 	
 	for anim_name in sprite_frames.get_animation_names():
 		for frame_idx in range(sprite_frames.get_frame_count(anim_name)):
